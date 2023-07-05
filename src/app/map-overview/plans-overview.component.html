@@ -1,0 +1,128 @@
+<div class="plans">
+  <div class="plans__filters">
+    <div class="first-line">
+      <span>Plans</span>
+    </div>
+    <form class="" [formGroup]="filters">
+      <div class="second-line">
+        <mat-chip-listbox formControlName="operations">
+          <mat-chip-option>Seeding</mat-chip-option>
+          <mat-chip-option>Application</mat-chip-option>
+          <mat-chip-option>Harvest</mat-chip-option>
+        </mat-chip-listbox>
+      </div>
+      <div class="third-line">
+        <button mat-stroked-button disabled>
+          <mat-icon>share</mat-icon>
+          Share
+        </button>
+        <button mat-stroked-button disabled>
+          <mat-icon>cloud_download</mat-icon>
+          Export
+        </button>
+        <button mat-stroked-button disabled>
+          <mat-icon>compare</mat-icon>
+          Compare
+        </button>
+        <button mat-flat-button color="primary" (click)="resetFilters()">Restore</button>
+      </div>
+    </form>
+  </div>
+  <div class="plans__overview" *ngIf="plans$ | async as plans">
+    <div class="total-info">
+      <span>{{plans.plans.length}} Path Plans</span>
+    </div>
+    <div class="grid">
+      <div class="card" *ngFor="let plan of plans.plans">
+        <div class="card__header">
+          <div class="logo">
+            <img class="" ngSrc="/assets/images/plant.png" alt="" height="40" width="40">
+          </div>
+          <div class="title">
+            <div class="title__first">
+              <span>LYLE'S WEST</span>
+            </div>
+            <div class="title__second">
+              <span>2023 Seeding 60</span>
+            </div>
+          </div>
+          <div class="check-box">
+            <mat-checkbox></mat-checkbox>
+          </div>
+        </div>
+        <div class="card__image">
+          <img class="field-image" ngSrc="{{plan.image}}" alt="" height="90" width="110">
+        </div>
+        <div class="card__data">
+          <div class="total-distance cardField">
+            <div class="title">
+              <span>Total Distance:</span>
+            </div>
+            <div class="data">
+              {{plan.totalDistance}}
+            </div>
+          </div>
+          <div class="operations cardField">
+            <div class="title">
+              <span>Operations:</span>
+            </div>
+            <div class="data">
+              {{plan.operation}}
+            </div>
+          </div>
+          <div class="tracks cardField">
+            <div class="title">
+              <span>Number of Tracks:</span>
+            </div>
+            <div class="data">
+              {{plan.numberOfTracks}}
+            </div>
+          </div>
+          <div class="headings cardField">
+            <div class="title">
+              <span>Headings:</span>
+            </div>
+            <div class="data">
+              {{plan.headings}}
+            </div>
+          </div>
+          <div class="swath cardField">
+            <div class="title">
+              <span>Swap Width:</span>
+            </div>
+            <div class="data">
+              {{plan.swathWidth}}
+            </div>
+          </div>
+          <div class="grower cardField">
+            <div class="title">
+              <span>Grower:</span>
+            </div>
+            <div class="data">
+              {{plan.grower}}
+            </div>
+          </div>
+          <div class="farm cardField">
+            <div class="title">
+              <span>Farm:</span>
+            </div>
+            <div class="data">
+              {{plan.farm}}
+            </div>
+          </div>
+        </div>
+        <div class="card__footer">
+          <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>info</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
